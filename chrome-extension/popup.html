@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Context Intent Recommender</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Recommended actions</h1>
+        <button id="refresh" type="button">Refresh context</button>
+      </header>
+
+      <label>
+        Runtime
+        <input id="runtime-url" value="http://127.0.0.1:8787/recommend" />
+      </label>
+
+      <section id="status" class="status">Waiting for page context</section>
+
+      <section>
+        <h2>Actions</h2>
+        <ol id="actions"></ol>
+      </section>
+
+      <details>
+        <summary>Context</summary>
+        <pre id="context"></pre>
+      </details>
+
+      <details>
+        <summary>Runtime result</summary>
+        <pre id="result"></pre>
+      </details>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

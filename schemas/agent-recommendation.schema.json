@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scene", "sceneConfidence", "fallback", "recommendations", "explanation"],
+  "properties": {
+    "scene": {
+      "type": "string",
+      "enum": [
+        "github_pr",
+        "youtube_video",
+        "document_editing",
+        "email_reading",
+        "chat_thread",
+        "code_selection",
+        "content_page",
+        "assessment_page",
+        "generic_web_page",
+        "unknown"
+      ]
+    },
+    "sceneConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "fallback": { "type": "boolean" },
+    "recommendations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "confidence", "reasons"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "ask_user_input",
+              "summarize_changes",
+              "write_review",
+              "find_risks",
+              "summarize_video",
+              "extract_timeline",
+              "list_key_points",
+              "continue_writing",
+              "polish_text",
+              "rewrite_text",
+              "draft_reply",
+              "summarize_email",
+              "translate_text",
+              "summarize_conversation",
+              "explain_code",
+              "write_tests",
+              "add_comments",
+              "summarize_page",
+              "extract_page_key_points",
+              "summarize_assessment",
+              "extract_assessment_requirements",
+              "prepare_assessment_plan"
+            ]
+          },
+          "label": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "reasons": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "explanation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "quality", "sceneEvidence"],
+      "properties": {
+        "decision": { "type": "string" },
+        "quality": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["missingFields", "hasStrongUserLocalSignal"],
+          "properties": {
+            "missingFields": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "hasStrongUserLocalSignal": { "type": "boolean" }
+          }
+        },
+        "sceneEvidence": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

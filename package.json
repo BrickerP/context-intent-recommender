@@ -1,0 +1,42 @@
+{
+  "name": "context-intent-recommender",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Local Chrome context collector and action recommender bridge for agent frontends.",
+  "license": "MIT",
+  "author": "BrickerP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrickerP/context-intent-recommender.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BrickerP/context-intent-recommender/issues"
+  },
+  "homepage": "https://github.com/BrickerP/context-intent-recommender#readme",
+  "keywords": [
+    "agent",
+    "browser-extension",
+    "context",
+    "intent-recognition",
+    "recommendation-router"
+  ],
+  "files": [
+    "chrome-extension/",
+    "schemas/",
+    "scripts/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "bin": {
+    "frontend": "scripts/frontend.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "runtime": "node scripts/runtime-server.js",
+    "show": "node scripts/frontend.js show"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

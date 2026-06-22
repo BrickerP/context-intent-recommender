@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Context Intent Recommender",
+  "version": "0.1.0",
+  "description": "Collects current tab context and asks the local runtime for recommended actions.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "action": {
+    "default_title": "Recommend actions",
+    "default_popup": "popup.html"
+  }
+}
