@@ -1,5 +1,7 @@
 # Context Intent Recommender
 
+[![ci](https://github.com/BrickerP/context-intent-recommender/actions/workflows/ci.yml/badge.svg)](https://github.com/BrickerP/context-intent-recommender/actions/workflows/ci.yml)
+
 Context Intent Recommender is a small local prototype for agent frontends.
 It captures the user's current browser context, sends it to a local runtime,
 and returns the most useful next action, such as summarize, reply, translate,
