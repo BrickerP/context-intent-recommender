@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["22", "24"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Syntax-check scripts and extension
+        run: |
+          for f in scripts/*.js src/*.js chrome-extension/*.js; do
+            [ -f "$f" ] && node --check "$f"
+          done
+      - name: Validate JSON schemas and manifest
+        run: |
+          for f in schemas/*.json chrome-extension/manifest.json; do
+            node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$f"
+          done
+      - name: Tests
+        run: npm test
